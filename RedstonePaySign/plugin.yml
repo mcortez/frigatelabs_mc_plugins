@@ -1,0 +1,5 @@
+name: Redstone Pay Sign
+main: com.frigatelabs.minecraft.rps.RPSPlugin
+version: 1.0
+depend: [iConomy]
+description: Allows you to create signs that require payment to activate redstone devices.  
