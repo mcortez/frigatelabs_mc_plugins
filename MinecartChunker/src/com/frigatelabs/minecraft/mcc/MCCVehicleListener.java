@@ -23,13 +23,15 @@ public class MCCVehicleListener extends VehicleListener
 		Chunk curChunk = v.getLocation().getBlock().getChunk();
 		World curWorld = curChunk.getWorld();
 		
-		int chunkLoadRange = 1;
+		int chunkLoadRange = 4;
 		
 		int curX = curChunk.getX();
 		int curZ = curChunk.getZ();
 		
 		int deltaChunkX;
 		int deltaChunkZ;
+		
+		// thePlugin.logDebug("Cart moved, currently in Chunk @" + curX + ", " + curZ);		
 		
 		for(int deltaX = -chunkLoadRange; deltaX <= chunkLoadRange; deltaX++ )
 		{
@@ -40,10 +42,14 @@ public class MCCVehicleListener extends VehicleListener
 				
 				Chunk deltaChunk = curWorld.getChunkAt(deltaChunkX, deltaChunkZ);
 				
+				//thePlugin.logDebug("Checking chunk at " + deltaChunkX + ", " + deltaChunkZ);
+				/*
 				if( !deltaChunk.isLoaded() )
 				{
-					thePlugin.logDebug("Loading Chunk: " + curChunk.getX() + ", " + curChunk.getZ());
+					thePlugin.logDebug("**** Loading Chunk: " + deltaChunkX + ", " + deltaChunkZ);
+					deltaChunk.load();
 				}
+				*/
 			}
 		}
 		
