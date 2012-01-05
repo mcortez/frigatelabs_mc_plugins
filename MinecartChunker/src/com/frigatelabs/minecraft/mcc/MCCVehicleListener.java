@@ -2,6 +2,7 @@ package com.frigatelabs.minecraft.mcc;
 
 import org.bukkit.Chunk;
 import org.bukkit.World;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Vehicle;
 import org.bukkit.event.vehicle.VehicleListener;
 import org.bukkit.event.vehicle.VehicleMoveEvent;
@@ -20,7 +21,8 @@ public class MCCVehicleListener extends VehicleListener
 	{
 		Vehicle v = e.getVehicle();
 		
-		Chunk curChunk = v.getLocation().getBlock().getChunk();
+		Block curBlock = v.getLocation().getBlock();
+		Chunk curChunk = curBlock.getChunk();
 		World curWorld = curChunk.getWorld();
 		
 		int chunkLoadRange = 3;
@@ -30,6 +32,22 @@ public class MCCVehicleListener extends VehicleListener
 		
 		int deltaChunkX;
 		int deltaChunkZ;
+		
+		/*
+		Location oldLocation = thePlugin.carts.get(v.getUniqueId());
+		if( oldLocation != null )
+		{
+			if( oldLocation.equals(curBlock.getLocation()) )
+			{
+				thePlugin.logDebug("Cart moved [" + oldLocation + "] - [" + curBlock.getLocation() + "]");
+			}
+		}
+		
+		thePlugin.carts.put(v.getUniqueId(), curBlock.getLocation() );
+		*/
+		
+		
+		
 		
 		// thePlugin.logDebug("Cart moved, currently in Chunk @" + curX + ", " + curZ);		
 		
