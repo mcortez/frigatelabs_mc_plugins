@@ -1,4 +1,12 @@
 name: Minecart Chunker
 main: com.frigatelabs.minecraft.mcc.MCCPlugin
 version: 1.0
-description: Attempts to keep chunks that Minecarts are in, or about to enter loaded.  
+description: Attempts to keep chunks that Minecarts are in, or about to enter loaded.
+
+commands:
+    mccdebug:
+        description: Toggle Minecart Chunker debug
+#        permission: <plugin name>.mccdebug
+        usage: /<command>
+
+  

@@ -1,6 +1,7 @@
 package com.frigatelabs.minecraft.mcc;
 
 import org.bukkit.Chunk;
+import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Vehicle;
@@ -33,46 +34,46 @@ public class MCCVehicleListener extends VehicleListener
 		int deltaChunkX;
 		int deltaChunkZ;
 		
-		/*
+		
 		Location oldLocation = thePlugin.carts.get(v.getUniqueId());
 		if( oldLocation != null )
 		{
-			if( oldLocation.equals(curBlock.getLocation()) )
+			Location newLocation = curBlock.getLocation();
+			if( !oldLocation.equals(newLocation) )
 			{
-				thePlugin.logDebug("Cart moved [" + oldLocation + "] - [" + curBlock.getLocation() + "]");
+				thePlugin.logDebug("Cart moved [" + oldLocation.getBlockX() + ", " + oldLocation.getBlockZ() + "] - [" + newLocation.getBlockX() + ", " + newLocation.getBlockZ() + "]");
+
+				if( !oldLocation.getBlock().getChunk().equals(curBlock.getChunk()) )
+				{
+					for(int deltaX = -chunkLoadRange; deltaX <= chunkLoadRange; deltaX++ )
+					{
+						for(int deltaZ = -chunkLoadRange; deltaZ <= chunkLoadRange; deltaZ++ )
+						{
+							deltaChunkX = curX + deltaX;
+							deltaChunkZ = curZ + deltaZ;
+							
+							Chunk deltaChunk = curWorld.getChunkAt(deltaChunkX, deltaChunkZ);
+							
+							// thePlugin.logDebug("**** Force Loading Chunk: " + deltaChunkX + ", " + deltaChunkZ);
+							if( !deltaChunk.load() )
+							{
+								thePlugin.logDebug("Chunk.load() returned false!");
+							}
+							
+						}
+					}
+				}
 			}
 		}
 		
 		thePlugin.carts.put(v.getUniqueId(), curBlock.getLocation() );
-		*/
+		
 		
 		
 		
 		
 		// thePlugin.logDebug("Cart moved, currently in Chunk @" + curX + ", " + curZ);		
 		
-		for(int deltaX = -chunkLoadRange; deltaX <= chunkLoadRange; deltaX++ )
-		{
-			for(int deltaZ = -chunkLoadRange; deltaZ <= chunkLoadRange; deltaZ++ )
-			{
-				deltaChunkX = curX + deltaX;
-				deltaChunkZ = curZ + deltaZ;
-				
-				Chunk deltaChunk = curWorld.getChunkAt(deltaChunkX, deltaChunkZ);
-				
-				// thePlugin.logDebug("**** Force Loading Chunk: " + deltaChunkX + ", " + deltaChunkZ);
-				deltaChunk.load();
-				
-				//thePlugin.logDebug("Checking chunk at " + deltaChunkX + ", " + deltaChunkZ);
-
-				/*
-				if( !deltaChunk.isLoaded() )
-				{
-					deltaChunk.load();
-				}
-				*/
-			}
-		}
 		
 	}
 }
