@@ -1,0 +1,4 @@
+name: ResidenceTools
+main: com.frigatelabs.minecraft.rt.RTPlugin
+version: 1.0
+depend: [Residence]
