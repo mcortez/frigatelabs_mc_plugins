@@ -2,3 +2,7 @@ name: ResidenceTools
 main: com.frigatelabs.minecraft.rt.RTPlugin
 version: 1.0
 depend: [Residence]
+commands:
+    rtselect:
+        description: Select current residence
+        usage: /<command> areaname

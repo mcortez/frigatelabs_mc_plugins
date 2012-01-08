@@ -102,12 +102,15 @@ public class RTPlugin extends JavaPlugin
 							for( String name : areas )
 							{
 								sender.sendMessage(name);
+								return true;
+								
 							}
 						}
 					} else if(areas.length == 1) {
 						areaName = areas[0];
 					} else {
 						sender.sendMessage("Does not appear to be any areas.");					
+						return true;
 					}
 					
 					
@@ -118,10 +121,12 @@ public class RTPlugin extends JavaPlugin
 						smanager.placeLoc1(player.getName(), ca.getLowLoc());
 						smanager.placeLoc1(player.getName(), ca.getHighLoc());
 						smanager.showSelectionInfo(player);
+						return true;
 					}
 					
 				} else {
 					sender.sendMessage("You do not appear to be in a residence.");					
+					return true;
 				}
 				//String placeName = cr.
 			}
