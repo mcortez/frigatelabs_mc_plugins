@@ -1,0 +1,13 @@
+name: Crafting Tools
+main: com.frigatelabs.minecraft.ct.CTPlugin
+version: 1.0
+description: Tools for working with Crafting Recipes
+
+commands:
+    add:
+        description: Add type id to forbidden list
+        usage: /<command> [id]
+    remove:
+        description: Remove type id from forbidden list
+        usage: /<command> [id]
+  
